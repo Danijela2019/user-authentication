@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;700&display=swap" rel="stylesheet">
+      <link  rel="stylesheet" type="text/css" href="style.css">
+      <script defer src="./index.js"></script>
+      <title>LoginPage</title>
+      <link rel = "icon" href ="favicon.ico" type = "image/x-icon">
+   </head>
+   <body class="index">
+        <main class="login-container">
+            <h1 class="login-header">User Authentication page</h1>
+            <section class="login-form__section">
+                <form class="login-form__fieldname" id="login-form-name" action="" method="POST">
+                    <input
+                        class="login-field__inputname"
+                        id="login-input-name"
+                        type="text"
+                        name="name-input"
+                        placeholder="User name"
+                    />
+                </form>
+                <form class="login-form__fieldpassword" id="login-form-password" action="" method="POST">
+                    <input
+                        class="login-field__inputpassword"
+                        id="login-input-password"
+                        type="text"
+                        name="password-input"
+                        placeholder="Password"
+                    />
+                </form> 
+                <div class="login-buttons">
+                    <input class="login-field__button btn" type="submit" value="Submit" />
+                    <input class="login-field__cancelbutton btn" type="submit" value="Cancel" />
+                </div>
+            </section>
+        </main>   
+   </body>
+</html>
+
