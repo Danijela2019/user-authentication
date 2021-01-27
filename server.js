@@ -28,6 +28,9 @@ server.get("/", (_req, res) => {
 server.get("/login", (_req, res) => {
    res.sendFile('./public/login.html', { root: __dirname });
 });
+server.get("/password-change", (_req, res) => {
+    res.sendFile('./public/password-change.html', { root: __dirname });
+ });
 
 server.post("/api/register", async (req, res) => {
     const {userName, password: plainTextPassword}= req.body;
@@ -71,8 +74,40 @@ server.post('/api/login', async (req, res)=> {
     }
     res.json({message: 'error', error: 'Invalid user name/password11'})
 }) 
+
+server.post("/api/password-change", async (req,res)=>{
+    const {token, newPassword : plainTextPassword}= req.body;
+    if (!userName || typeof userName !== 'string' || userName.length === 0){
+        return res.status(422).json({error: "Invalid user name"})
+    }
+    if(!plainTextPassword || typeof plainTextPassword !== 'string' || plainTextPassword.lenght === 0 ){
+        return res.status(422).json({error: "Invalid password format"}) 
+    }
+    if(plainTextPassword.length < 5){
+        return res.status(422).json({error: "Pasword lenght must be at least 6 characters"})
+    }
+    try {
+    const user = jwt.verify(token, jwt_secret) 
+    res.status(200).json({message: 'Password successfuly changed'})
+    console.log('User',user);
+    const _id = user.id;
+    const hashedPassword = await bcrypt.hash(plainTextPassword,10)
+    await User.updateOne(
+        {_id},
+        {
+            $set: {password:hashedPassword}
+        }
+    )
+    res.status(201).json('Success change')
+    } catch (error) {
+        res.json({status:'error', error: "Not possible" })
+    }
+})
+
+
 const port = process.env.PORT || 4000;
 
  server.listen(port, () => {
      console.log(`Server listening at ${port}`);
  });
+
