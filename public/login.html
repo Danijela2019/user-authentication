@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;700&display=swap" rel="stylesheet">
+      <link  rel="stylesheet" type="text/css" href="style.css" href="normalize.css" >
+      <script defer src="./index.js"></script>
+      <title>LoginPage</title>
+      <link rel = "icon" href ="favicon.ico" type = "image/x-icon">
+   </head>
+   <body class="index">
+        <main class="main">
+            <h1 class="login-header">User Login page</h1>
+            <div class="login-container">
+                
+                <section class="login-form__section">
+                    <form class="login-form" id="login-form" autocomplete="off">
+                        <input
+                            class="login-field__inputname"
+                            id="login-input-name1"
+                            type="text"
+                            name="name-input"
+                            placeholder="User name"
+                        />
+                        <input 
+                            class="login-field__inputpassword"
+                            id="login-input-password1"
+                            type="password"
+                            name="password-input"
+                            placeholder="Password"
+                            autocomplete="off"
+                        />
+                    </form>
+                   <button class="login-field__button btn" id="submit-form" onClick="loginUser(event)" >Submit</button>
+                </section>
+            
+                <aside class="cancel-field">
+                    <button class="cancel-field__button btn" id="cancel-form" onClick="clearForm1(event)">Cancel</button>
+                    <p><a href="#">Forgot password?</a></p>
+                </aside>
+                <p class="signup">Don't have an account? 
+                   <a href="#">Signup</a> 
+                </p>
+            </div>
+        </main>   
+   </body>
+</html>
+
