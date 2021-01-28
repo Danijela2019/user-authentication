@@ -1,18 +1,20 @@
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 body {
   font-family: "Oswald", sans-serif;
   background: whitesmoke;
   text-align: center;
 }
-.login-header {
+.login-header,
+.register-header,
+.change-password-header {
   margin: 1rem;
   font-weight: bold;
 }
-.login-container {
+.login-container,
+.register-container,
+.change-password-container {
   background: #d6e9ff;
   border: 1px solid rgb(14, 13, 53);
   border-radius: 5px;
@@ -30,7 +32,9 @@ body {
   color: white;
 }
 
-.login-form__section {
+.login-form__section,
+.register-form__section,
+.change-password-form__section {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,20 +45,28 @@ body {
   align-items: baseline;
   margin: 0 0.5rem;
 }
-.login-form {
+.login-form,
+.register-form,
+.change-password-form {
   width: 90%;
   margin: 1rem;
 }
 
 .login-field__inputname,
-.login-field__inputpassword {
+.login-field__inputpassword,
+.register-field__inputname,
+.register-field__inputpassword,
+.change-password-field__inputname,
+.change-password-field__inputpassword {
   width: 90%;
   height: 2.5rem;
   margin: 1rem 0.5rem;
   border-radius: 5px;
   text-align: center;
 }
-.login-field__button {
+.login-field__button,
+.register-field__button,
+.change-password-field__button {
   width: 90%;
 }
 .cancel-field__button {
@@ -66,17 +78,25 @@ body {
 }
 
 @media only screen and (min-width: 767px) {
-  .login-container {
+  .login-container,
+  .register-container,
+  .change-password-container {
     width: 500px;
   }
   .cancel-field {
     margin: 0 2.5rem;
   }
-  .login-field__button {
+  .login-field__button,
+  .register-field__button,
+  .change-password__button {
     width: 82%;
   }
   .login-field__inputname,
-  .login-field__inputpassword {
+  .login-field__inputpassword,
+  .register-field__inputname,
+  .register-field__inputpassword,
+  .change-password__inputname,
+  .change-password__inputpassword {
     width: 90%;
   }
   .main {
