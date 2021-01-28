@@ -2,23 +2,26 @@
   box-sizing: border-box;
 }
 body {
-  font-family: "Oswald", sans-serif;
+  font-family: 'Oswald', sans-serif;
   background: whitesmoke;
   text-align: center;
 }
 .login-header,
 .register-header,
-.change-password-header {
+.change-password-header,
+.forgot-password-header {
   margin: 1rem;
   font-weight: bold;
 }
 .login-container,
 .register-container,
-.change-password-container {
+.change-password-container,
+.forgot-password-container {
   background: #d6e9ff;
   border: 1px solid rgb(14, 13, 53);
   border-radius: 5px;
   margin: 1rem 3rem;
+  min-height: 400px;
 }
 .btn {
   cursor: pointer;
@@ -34,7 +37,8 @@ body {
 
 .login-form__section,
 .register-form__section,
-.change-password-form__section {
+.change-password-form__section,
+.forgot-password-form__section {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,7 +51,8 @@ body {
 }
 .login-form,
 .register-form,
-.change-password-form {
+.change-password-form,
+.forgot-password-form {
   width: 90%;
   margin: 1rem;
 }
@@ -56,8 +61,8 @@ body {
 .login-field__inputpassword,
 .register-field__inputname,
 .register-field__inputpassword,
-.change-password-field__inputname,
-.change-password-field__inputpassword {
+.change-password-field__inputpassword,
+.forgot-password-field__inputname {
   width: 90%;
   height: 2.5rem;
   margin: 1rem 0.5rem;
@@ -66,7 +71,8 @@ body {
 }
 .login-field__button,
 .register-field__button,
-.change-password-field__button {
+.change-password-field__button,
+.forgot-password-field__button {
   width: 90%;
 }
 .cancel-field__button {
@@ -80,7 +86,8 @@ body {
 @media only screen and (min-width: 767px) {
   .login-container,
   .register-container,
-  .change-password-container {
+  .change-password-container,
+  .forgot-password-container {
     width: 500px;
   }
   .cancel-field {
@@ -88,15 +95,16 @@ body {
   }
   .login-field__button,
   .register-field__button,
-  .change-password__button {
+  .change-password-field__button,
+  .forgot-password-field__button {
     width: 82%;
   }
   .login-field__inputname,
   .login-field__inputpassword,
   .register-field__inputname,
   .register-field__inputpassword,
-  .change-password__inputname,
-  .change-password__inputpassword {
+  .change-password-field__inputpassword,
+  .forgot-password-field__inputname {
     width: 90%;
   }
   .main {
