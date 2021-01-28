@@ -21,7 +21,7 @@ const sendUserDataToServer = async (event, input1Id, input2Id, path) => {
     
 const handleResponseData= (data,path) => {
     if(data.error){
-        console.log('Data.error',data.error)
+        console.log('There is an error',data.error)
     }
     if(data.status === 'ok') {
          switch(path) {
