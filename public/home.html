@@ -12,32 +12,31 @@
    </head>
    <body class="index">
         <main class="main">
-            <h1 class="login-header">User Authentication page</h1>
-            <div class="login-container">
-                
-                <section class="login-form__section">
-                    <form class="login-form" id="login-form" autocomplete="off">
+            <h1 class="register-header">Register user</h1>
+            <div class="register-container">
+                <section class="register-form__section">
+                    <form class="register-form" id="register-form" autocomplete="off">
                         <input
-                            class="login-field__inputname"
-                            id="login-input-name"
+                            class="register-field__inputname"
+                            id="register-input-name"
                             type="text"
                             name="name-input"
                             placeholder="User name"
                         />
                         <input 
-                            class="login-field__inputpassword"
-                            id="login-input-password"
+                            class="register-field__inputpassword"
+                            id="register-input-password"
                             type="password"
                             name="password-input"
                             placeholder="Password"
                             autocomplete="off"
                         />
                     </form>
-                   <button class="login-field__button btn" id="submit-form" onClick="registerUser(event)" >Submit</button>
+                   <button class="register-field__button btn" id="submit-form" onClick="sendUserDataToServer(event,'register-input-name','register-input-password','/api/register')" >Submit</button>
                 </section>
             
                 <aside class="cancel-field">
-                    <button class="cancel-field__button btn" id="cancel-form" onClick="clearForm(event)">Cancel</button>
+                    <button class="cancel-field__button btn" id="cancel-form" onClick="clearForm(event,'register-form')">Cancel</button>
                     <p><a href="#">Forgot password?</a></p>
                 </aside>
                 <p class="signup">Don't have an account? 

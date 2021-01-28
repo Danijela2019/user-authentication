@@ -1,76 +1,50 @@
-const registerUser = async (event) => {
+const sendUserDataToServer = async (event, input1Id, input2Id, path) => {
     event.preventDefault();
-    const userName= document.getElementById("login-input-name").value;
-    const password = document.getElementById("login-input-password").value;
+    const userName=(document.getElementById(input1Id)) ? document.getElementById(input1Id).value : null;
+    const password = document.getElementById(input2Id).value;
     const options = {
         method: 'POST',
         headers:{
         'Content-Type': 'application/json'
         },
-        body : JSON.stringify({userName, password})
+        body : userName ?
+            JSON.stringify({userName, password}): 
+            JSON.stringify({
+                newPassword : password,
+                token:localStorage.getItem("token")})
     }
-    const resault = await fetch('/api/register',options)
-    .then((res)=> res.json())
-    .then((data) => { if(data.error)console.log('Data.error',data.error)})
-    .catch((err)=> console.log('Error',err))
+    const resault = await fetch(path,options)
+        .then((res)=> res.json())
+        .catch((err)=> console.log('Error',err))
+        handleResponseData(resault,path);
+    }  
+    
+const handleResponseData= (data,path) => {
+    if(data.error){
+        console.log('Data.error',data.error)
+    }
+    if(data.status === 'ok') {
+         switch(path) {
+            case ("/api/register"):
+                console.log(data.message)
+            break;
+            case ("/api/login"):
+                localStorage.setItem("token", data.data);
+                console.log(data.message)
+            break;
+            case ('/api/change-password'):
+                console.log(data.message)
+                break;
+            default:
+                console.log('Somethin went wrong,check the url path');
+            }
+    } 
 }
-
-const clearForm = (event) => {
+       
+const clearForm = (event,formId) => {
     event.preventDefault();
-    document.getElementById("login-form").reset()
-};
-////////////////////////////////////////////////////////////////////////// LOGIN
-const clearForm1 = (event) => {
-    event.preventDefault();
-    document.getElementById("login-form1").reset()
-};
-
-const loginUser = async (event) => {
-    event.preventDefault();
-    const userName= document.getElementById("login-input-name1").value;
-    const password = document.getElementById("login-input-password1").value;
-    const options = {
-        method: 'POST',
-        headers:{
-        'Content-Type': 'application/json'
-        },
-        body : JSON.stringify({userName, password})
-    }
-    const resault = await fetch('/api/login',options)
-    .then((res)=> res.json())
-    if(resault.status === "ok"){
-        console.log('The token is', resault.data)
-        localStorage.setItem("token", resault.data);
-    }else {
-        console.log('Resault.error', resault.error)
-    }
-}
-
-////////////////////////////////////////////////////////PASSWORD CHANGE
-
-const clearForm2 = (event) => {
-    event.preventDefault();
-    document.getElementById("login-form2").reset()
+    document.getElementById(formId).reset()
 };
 
-const changePassword = async (event) => {
-    event.preventDefault();
-    const password = document.getElementById("login-input-password2").value;
-    const options = {
-        method: 'POST',
-        headers:{
-        'Content-Type': 'application/json'
-        },
-        body : JSON.stringify({
-            newPassword : password,
-            token:localStorage.getItem("token")})
-    }
-    const resault = await fetch('/api/password-change',options)
-    .then((res)=> res.json())
-    if(resault.status === "ok"){
-        console.log('The token is', resault.data)
 
-    }else {
-        console.log('Resault.error', resault.error)
-    }
-}
+

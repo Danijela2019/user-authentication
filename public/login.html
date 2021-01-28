@@ -19,25 +19,25 @@
                     <form class="login-form" id="login-form" autocomplete="off">
                         <input
                             class="login-field__inputname"
-                            id="login-input-name1"
+                            id="login-input-name"
                             type="text"
                             name="name-input"
                             placeholder="User name"
                         />
                         <input 
                             class="login-field__inputpassword"
-                            id="login-input-password1"
+                            id="login-input-password"
                             type="password"
                             name="password-input"
                             placeholder="Password"
                             autocomplete="off"
                         />
                     </form>
-                   <button class="login-field__button btn" id="submit-form" onClick="loginUser(event)" >Submit</button>
+                   <button class="login-field__button btn" id="submit-form"  onClick="sendUserDataToServer(event,'login-input-name','login-input-password','/api/login')" >Submit</button>
                 </section>
             
                 <aside class="cancel-field">
-                    <button class="cancel-field__button btn" id="cancel-form" onClick="clearForm1(event)">Cancel</button>
+                    <button class="cancel-field__button btn" id="cancel-form" onClick="clearForm(event,'login-form')">Cancel</button>
                     <p><a href="#">Forgot password?</a></p>
                 </aside>
                 <p class="signup">Don't have an account? 
