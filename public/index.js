@@ -1,9 +1,19 @@
+const clearInputFields = (input1, input2) => {
+  document.getElementById(input1) ? (document.getElementById(input1).value = '') : null;
+  document.getElementById(input2).value = '';
+};
+
+const sendMessageToUser = (input) => {
+  document.getElementById('messageText').innerHTML = `<h3>${input}</h3>`;
+};
+
 const sendUserDataToServer = async (event, input1Id, input2Id, path) => {
   event.preventDefault();
   const userName = document.getElementById(input1Id)
     ? document.getElementById(input1Id).value
     : null;
   const password = document.getElementById(input2Id).value;
+  clearInputFields(input1Id, input2Id);
   const options = {
     method: 'POST',
     headers: {
@@ -18,28 +28,28 @@ const sendUserDataToServer = async (event, input1Id, input2Id, path) => {
   };
   const resault = await fetch(path, options)
     .then((res) => res.json())
-    .catch((err) => console.log('Error', err));
+    .catch((err) => sendMessageToUser(err));
   handleResponseData(resault, path);
 };
 
 const handleResponseData = (data, path) => {
   if (data.error) {
-    console.log('There is an error', data.error);
+    sendMessageToUser(data.error);
   }
   if (data.status === 'ok') {
     switch (path) {
       case '/api/register':
-        console.log(data.message);
+        sendMessageToUser(data.message);
         break;
       case '/api/login':
         localStorage.setItem('token', data.data);
-        console.log(data.message);
+        sendMessageToUser(data.message);
         break;
       case '/api/change-password':
-        console.log(data.message);
+        sendMessageToUser(data.message);
         break;
       default:
-        console.log('Somethin went wrong,check the url path');
+        sendMessageToUser('Something went wrong 🙁');
     }
   }
 };
@@ -47,4 +57,5 @@ const handleResponseData = (data, path) => {
 const clearForm = (event, formId) => {
   event.preventDefault();
   document.getElementById(formId).reset();
+  document.getElementById('messageText').innerHTML = ``;
 };
