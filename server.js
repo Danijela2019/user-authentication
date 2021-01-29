@@ -7,6 +7,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const jwt_secret = process.env.JWT_SECRET;
+const routes = require('./routes');
 
 mongoose.connect('mongodb://localhost:27017/authentication', {
   useNewUrlParser: true,
@@ -14,24 +15,9 @@ mongoose.connect('mongodb://localhost:27017/authentication', {
   useCreateIndex: true,
 });
 
-//const isEmptyObject = (obj) => !Object.keys(obj).length;
-
 server.use(bodyParser.json());
 server.use(express.static('public'));
-
-server.get('/', (_req, res) => {
-  res.sendFile('./public/home.html', { root: __dirname });
-});
-server.get('/login', (_req, res) => {
-  res.sendFile('./public/login.html', { root: __dirname });
-});
-server.get('/change-password', (_req, res) => {
-  res.sendFile('./public/change-password.html', { root: __dirname });
-});
-
-server.get('/forgot-password', (_req, res) => {
-  res.sendFile('./public/forgot-password.html', { root: __dirname });
-});
+server.use('/', routes);
 
 server.post('/api/register', async (req, res) => {
   const { userName, password: plainTextPassword } = req.body;
@@ -108,7 +94,7 @@ server.post('/api/change-password', async (req, res) => {
   }
 });
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 5000;
 
 server.listen(port, () => {
   console.log(`Server listening at ${port}`);

@@ -82,6 +82,21 @@ body {
 .signup {
   margin: 0.5rem;
 }
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4rem;
+}
+.anchor {
+  text-decoration: none;
+  color: rgb(38, 38, 165);
+}
+.message {
+  text-align: center;
+  margin: 0.5rem 1rem;
+}
 
 @media only screen and (min-width: 767px) {
   .login-container,
@@ -106,10 +121,5 @@ body {
   .change-password-field__inputpassword,
   .forgot-password-field__inputname {
     width: 90%;
-  }
-  .main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 }
