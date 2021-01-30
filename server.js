@@ -5,10 +5,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const routes = require('./routes');
 
-const userName = process.env.MONGO_USERNAME;
-//const pass = process.env.MONGO_PASSWORD;
 const port = process.env.PORT || 5000;
-//const CONNECTION_URL = `mongodb+srv://${userName}:${pass}@user-authentication.sjapq.mongodb.net/authentication?retryWrites=true&w=majority`;
 const CONNECTION_URL = `${process.env.MONGODB_URI}`;
 mongoose
   .connect(CONNECTION_URL, {
