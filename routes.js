@@ -56,8 +56,9 @@ router.post('/api/login', async (req, res) => {
   if (await bcrypt.compare(password, user.password)) {
     const token = jwt.sign({ id: user._id, userName: user.userName }, jwt_secret);
     return res.status(201).json({ status: 'ok', data: token, message: 'Logged in successfully' });
+  } else {
+    res.json({ message: 'error', error: 'Invalid user name/password12' });
   }
-  res.json({ message: 'error', error: 'Invalid user name/password12' });
 });
 
 router.post('/api/change-password', async (req, res) => {
