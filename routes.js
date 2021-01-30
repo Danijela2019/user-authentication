@@ -51,13 +51,13 @@ router.post('/api/login', async (req, res) => {
   const { userName, password } = req.body;
   const user = await User.findOne({ userName }).lean();
   if (!user) {
-    return res.json({ message: 'error', error: 'Invalid user name/password' });
+    return res.status(422).json({ message: 'error', error: 'Invalid user name/password11' });
   }
   if (await bcrypt.compare(password, user.password)) {
     const token = jwt.sign({ id: user._id, userName: user.userName }, jwt_secret);
-    return res.json({ status: 'ok', data: token, message: 'Logged in successfully' });
+    return res.status(201).json({ status: 'ok', data: token, message: 'Logged in successfully' });
   }
-  res.json({ message: 'error', error: 'Invalid user name/password' });
+  res.json({ message: 'error', error: 'Invalid user name/password12' });
 });
 
 router.post('/api/change-password', async (req, res) => {

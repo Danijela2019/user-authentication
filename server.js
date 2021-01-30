@@ -8,7 +8,7 @@ const routes = require('./routes');
 const port = process.env.PORT || 5000;
 const CONNECTION_URL = `${process.env.MONGODB_URI}`;
 mongoose
-  .connect(CONNECTION_URL, {
+  .connect(CONNECTION_URL || 'mongodb://localhost:27017/authentication', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
