@@ -8,8 +8,8 @@ A user authenticaiton program with a simple server build using Express and HTML 
 
 ![Registration form](authentication.png)
 
-##To-do
+## To-do
 
--**form validation in the frontend**
--**rebuild the frontend using some frontend framework**
--**refactor the routes file further**
+- **form validation in the frontend**
+- **rebuild the frontend using some frontend framework**
+- **refactor the routes file further**
