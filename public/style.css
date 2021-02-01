@@ -3,7 +3,6 @@
 }
 body {
   font-family: 'Oswald', sans-serif;
-  background: whitesmoke;
   text-align: center;
 }
 .login-header,
@@ -17,7 +16,7 @@ body {
 .register-container,
 .change-password-container,
 .forgot-password-container {
-  background: #d6e9ff;
+  background: #f1e8e6;
   border: 1px solid rgb(14, 13, 53);
   border-radius: 5px;
   margin: 1rem 3rem;
@@ -31,7 +30,7 @@ body {
   padding-right: 0.5rem;
   border-radius: 5px;
   margin: 1rem 0.5rem;
-  background: #455566;
+  background: #543c52;
   color: white;
 }
 
@@ -77,7 +76,7 @@ body {
 }
 .cancel-field__button {
   justify-content: flex-start;
-  background: rgb(122, 47, 47);
+  background: #f55951;
 }
 .signup {
   margin: 0.5rem;
@@ -91,7 +90,7 @@ body {
 }
 .anchor {
   text-decoration: none;
-  color: rgb(38, 38, 165);
+  color: rgb(59, 10, 25);
 }
 .message {
   text-align: center;
